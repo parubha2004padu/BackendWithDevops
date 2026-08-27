@@ -25,3 +25,16 @@ docker run -d \
   -p 8080:8080 \
   backenddevops:1.0
   
+
+
+
+--- for check compose is ready ot not --- 
+docker compose config
+
+docker compose up --build
+
+
+docker compose up -d --build
+docker compose logs
+
+docker compose down
