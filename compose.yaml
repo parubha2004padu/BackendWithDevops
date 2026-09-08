@@ -5,19 +5,31 @@ services:
     container_name: backend-compose
     ports:
       - "8080:8080"
+
     depends_on:
-      - mysql-backend
+      mysql-backend:
+        condition: service_healthy
 
   mysql-backend:
     image: mysql:latest
     container_name: mysql-compose
+
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: backenddevops
+
     ports:
       - "3306:3306"
+
     volumes:
       - mysql-data:/var/lib/mysql
+
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -uroot -proot || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
 
 volumes:
   mysql-data:
