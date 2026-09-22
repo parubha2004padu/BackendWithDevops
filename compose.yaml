@@ -11,7 +11,7 @@ services:
         condition: service_healthy
 
   mysql-backend:
-    image: mysql:latest
+    image: mysql:8.4
     container_name: mysql-compose
 
     environment:
@@ -25,11 +25,11 @@ services:
       - mysql-data:/var/lib/mysql
 
     healthcheck:
-      test: ["CMD-SHELL", "mysqladmin ping -h localhost -uroot -proot || exit 1"]
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -P 3306 -uroot -proot --protocol=tcp --silent"]
       interval: 10s
       timeout: 5s
-      retries: 10
-      start_period: 20s
+      retries: 20
+      start_period: 120s
 
 volumes:
   mysql-data:
