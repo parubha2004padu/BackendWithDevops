@@ -20,9 +20,21 @@ pipeline {
 
         stage('Build') {
             steps {
-                echo 'Building Spring Boot backend...'
+                echo 'Building Spring Boot backend with Java 17...'
 
                 sh '''
+
+		export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+                export PATH=$JAVA_HOME/bin:$PATH			
+
+		
+	         echo "Java used by Maven:"
+            java --version
+
+            echo "Javac used by Maven:"
+            javac --version
+		
+
                     chmod +x mvnw
                     ./mvnw clean package -DskipTests
                 '''
