@@ -25,7 +25,7 @@ public class StudentDataService {
     public StudentDataEntity insertData(
             StudentDataEntity studentDataEntity) {
 
-        logger.info("Inserting student data");
+        logger.info("Inserting student data...");
 
         return studentDataRepository.save(studentDataEntity);
     }
