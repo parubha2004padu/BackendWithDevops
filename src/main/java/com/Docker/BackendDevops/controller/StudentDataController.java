@@ -49,7 +49,7 @@ public class StudentDataController {
         return ResponseEntity.ok(
                 new ApiResponse<>(
                         true,
-                        "Students fetched successfully...",
+                        "Students fetched successfully",
                         students
                 )
         );
