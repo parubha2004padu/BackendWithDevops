@@ -33,7 +33,7 @@ public class StudentDataController {
                 .body(
                         new ApiResponse<>(
                                 true,
-                                "Student inserted successfully",
+                                "Student inserted successfully...",
                                 student
                         )
                 );
