@@ -32,7 +32,7 @@ public class StudentDataService {
 
     public List<StudentDataEntity> getAllData() {
 
-        logger.info("Fetching all student data");
+        logger.info("Fetching all student data...");
 
         return studentDataRepository.findAll();
     }
